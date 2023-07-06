@@ -6,7 +6,15 @@
  */
 
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View, Image, Button} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Button,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import TrackPlayer, {
   AppKilledPlaybackBehavior,
   Capability,
@@ -18,6 +26,10 @@ function App(): JSX.Element {
   useEffect(() => {
     TrackPlayer.setupPlayer();
   });
+
+  const onPress = async () => {
+    Alert.alert('Вы выигарли сочный махентохен');
+  };
 
   const onPressStop = async () => {
     TrackPlayer.pause();
@@ -37,22 +49,56 @@ function App(): JSX.Element {
   };
 
   return (
-    <View>
-      <Button onPress={onPressStop} title="stop бля" />
-      <Button onPress={onPressPlay} title="play бля" />
-
-      <Image
-        source={{
-          uri: 'https://pics.livejournal.com/nepejvoda_n_n/pic/00004ks8/s640x480',
-        }}
-        height={640}
-        width={480}
-      />
-      <Text>Привет пидоры</Text>
+    <View style={styles.container}>
+      <Text style={styles.header}>Getting Started</Text>
+      <Text style={styles.subtitle}>Getting Started Getting</Text>
+      <View>
+        <TouchableOpacity style={styles.button} onPress={onPress}>
+          <Text style={styles.text}>Let's go</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#6886EF',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  header: {
+    color: '#FFFFFF',
+    marginTop: 80,
+    fontFamily: Platform.OS === 'android' ? 'burgelabold' : 'Burgela',
+    fontSize: 40,
+  },
+
+  subtitle: {
+    color: '#FFFFFF',
+    marginTop: 10,
+    fontFamily: Platform.OS === 'android' ? 'burgelabold' : 'Burgela',
+    fontSize: 12,
+  },
+
+  button: {
+    position: 'relative',
+    alignItems: 'center',
+    backgroundColor: '#966AEF',
+    height: 42,
+    width: 140,
+    marginTop: 50,
+    borderRadius: 20,
+  },
+  text: {
+    flex: 1,
+    padding: 10,
+    position: 'relative',
+    color: '#FFFFFF',
+    fontFamily: Platform.OS === 'android' ? 'burgelabold' : 'Burgela',
+  },
+});
 
 export default App;
