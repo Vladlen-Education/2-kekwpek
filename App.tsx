@@ -14,6 +14,7 @@ import {
   Button,
   Alert,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import TrackPlayer, {
   AppKilledPlaybackBehavior,
@@ -21,6 +22,8 @@ import TrackPlayer, {
   RepeatMode,
   Event,
 } from 'react-native-track-player';
+import RadialGradient from 'react-native-radial-gradient';
+import InsetShadow from 'react-native-inset-shadow';
 
 function App(): JSX.Element {
   useEffect(() => {
@@ -49,55 +52,140 @@ function App(): JSX.Element {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
+      <View style={styles.container}>
+        <RadialGradient
+          style={{width: 500, height: 300, position: 'absolute'}}
+          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
+          stops={[0.2, 0.4, 0.6, 0.8]}
+          center={[110, 110]}
+          radius={200}></RadialGradient>
+      </View>
+      <View>
+        <RadialGradient
+          style={{
+            width: 500,
+            height: 400,
+            position: 'absolute',
+            left: 0,
+            top: 300,
+          }}
+          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
+          stops={[0.2, 0.4, 0.6, 0.8]}
+          center={[400, 200]}
+          radius={200}></RadialGradient>
+      </View>
+
+      <Image
+        source={require('./assets/images/headphones.png')}
+        style={styles.headphone}></Image>
+      <Image
+        source={require('./assets/images/abstrakt.png')}
+        style={styles.abstract}></Image>
       <Text style={styles.header}>Getting Started</Text>
       <Text style={styles.subtitle}>Getting Started Getting</Text>
-      <View>
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-          <Text style={styles.text}>Let's go</Text>
-        </TouchableOpacity>
-      </View>
+
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <Image
+          source={require('./assets/images/Vector.png')}
+          style={styles.note}></Image>
+        <Text style={styles.text}>Let's go</Text>
+      </TouchableOpacity>
+      <Text style={styles.kekwpek}>kekwpek</Text>
+      <Text style={styles.zhopa}>Best student</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#6886EF',
+    position: 'absolute',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#110B1D',
+  },
+
+  note: {
+    top: 19,
+    left: 140,
+  },
+
+  abstract: {
+    alignSelf: 'center',
+    position: 'relative',
+    bottom: 250,
+  },
+
+  headphone: {
+    position: 'relative',
+    alignSelf: 'center',
+    top: 100,
   },
 
   header: {
     color: '#FFFFFF',
-    marginTop: 80,
-    fontFamily: Platform.OS === 'android' ? 'burgelabold' : 'Burgela',
-    fontSize: 40,
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '44%',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+    fontSize: 32,
   },
 
   subtitle: {
     color: '#FFFFFF',
-    marginTop: 10,
-    fontFamily: Platform.OS === 'android' ? 'burgelabold' : 'Burgela',
-    fontSize: 12,
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '49%',
+    fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
+    fontSize: 15,
+    fontWeight: 'regular',
   },
 
   button: {
     position: 'relative',
-    alignItems: 'center',
+    alignSelf: 'center',
+    bottom: '30%',
     backgroundColor: '#966AEF',
-    height: 42,
-    width: 140,
-    marginTop: 50,
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    height: 69,
+    width: 200,
     borderRadius: 20,
   },
+
+  shadow: {
+    borderRadius: 25,
+  },
+
   text: {
-    flex: 1,
-    padding: 10,
-    position: 'relative',
+    position: 'absolute',
+    alignSelf: 'center',
+    top: 19,
+    left: 45,
     color: '#FFFFFF',
-    fontFamily: Platform.OS === 'android' ? 'burgelabold' : 'Burgela',
+    fontSize: 20,
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+  },
+
+  kekwpek: {
+    color: '#FFFFFF',
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: '24%',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+    fontSize: 15,
+  },
+  zhopa: {
+    color: '#FFFFFF',
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: '22%',
+    fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
+    fontSize: 10,
   },
 });
 
