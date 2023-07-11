@@ -174,6 +174,99 @@ const styles = StyleSheet.create({
     width: 200,
     borderRadius: 20,
   },
+  buttonGoogle: {
+    position: 'relative',
+    alignSelf: 'center',
+    bottom: '40%',
+    backgroundColor: '#322251',
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    height: 59,
+    width: 377,
+    borderRadius: 10,
+  },
+
+  buttonFacebook: {
+    position: 'relative',
+    alignSelf: 'center',
+    bottom: '38%',
+    backgroundColor: '#322251',
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    height: 59,
+    width: 377,
+    borderRadius: 10,
+  },
+
+  buttonApple: {
+    position: 'relative',
+    alignSelf: 'center',
+    bottom: '36%',
+    backgroundColor: '#322251',
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    height: 59,
+    width: 377,
+    borderRadius: 10,
+  },
+
+  buttonLogin: {
+    position: 'relative',
+    alignSelf: 'center',
+    bottom: '23%',
+    backgroundColor: '#966AEF',
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    height: 59,
+    width: 377,
+    borderRadius: 10,
+  },
+
+  buttonLoginText: {
+    position: 'absolute',
+    alignSelf: 'center',
+    color: '#FFFFFF',
+    fontSize: 14,
+    bottom: 20,
+    fontWeight: 'bold',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+  },
+
+  imageGoogle1: {
+    height: 30,
+    width: 30,
+    left: 35,
+    top: 15,
+  },
+
+  GoogleLoginText: {
+    position: 'relative',
+    bottom: 9,
+    alignSelf: 'center',
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: 'bold',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+  },
+
+  signUpText: {
+    color: '#FFFFFF',
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: '27%',
+    fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
+    fontSize: 13,
+  },
 
   shadow: {
     borderRadius: 25,
@@ -213,11 +306,16 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     position: 'absolute',
     alignSelf: 'center',
-    top: '15%',
+    top: '18%',
     fontWeight: 'bold',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 26,
+  },
+
+  line: {
+    flexDirection: 'row',
+    bottom: '80%',
   },
 });
 
@@ -264,7 +362,63 @@ function LoginScreen(): JSX.Element {
       <Image
         source={require('./assets/images/abstrakt.png')}
         style={{alignSelf: 'center'}}></Image>
-      <Text style={styles.login}>Login your account</Text>
+      <Text style={styles.login}>Let`s get you in</Text>
+      <TouchableOpacity style={styles.buttonGoogle}>
+        <Image
+          source={require('./assets/images/google1.png')}
+          style={styles.imageGoogle1}></Image>
+        <Text style={styles.GoogleLoginText}>Continue with Google</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonFacebook}>
+        <Image
+          source={require('./assets/images/facebook1.png')}
+          style={styles.imageGoogle1}></Image>
+        <Text style={styles.GoogleLoginText}>Continue with Google</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonApple}>
+        <Image
+          source={require('./assets/images/apple1.png')}
+          style={styles.imageGoogle1}></Image>
+        <Text style={styles.GoogleLoginText}>Continue with Google</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.buttonLogin}>
+        <Text style={styles.buttonLoginText}>Log in with a password</Text>
+      </TouchableOpacity>
+      <View style={styles.line}>
+        <View
+          style={{
+            backgroundColor: 'white',
+            height: 2,
+
+            flex: 1,
+            alignSelf: 'center',
+          }}
+        />
+        <Text
+          style={{
+            color: '#FFFFFF',
+            alignSelf: 'center',
+            paddingHorizontal: 5,
+            fontSize: 13,
+            fontWeight: 'bold',
+            fontFamily:
+              Platform.OS === 'android'
+                ? 'centurygothicbold'
+                : 'Century Gothic',
+          }}>
+          or
+        </Text>
+        <View
+          style={{
+            backgroundColor: 'white',
+            height: 2,
+            flex: 1,
+            alignSelf: 'center',
+          }}
+        />
+      </View>
+      <Text style={styles.signUpText}>Don`t have an account? Sign Up</Text>
     </View>
   );
 }
