@@ -24,16 +24,15 @@ import TrackPlayer, {
   Event,
 } from 'react-native-track-player';
 import RadialGradient from 'react-native-radial-gradient';
-import InsetShadow from 'react-native-inset-shadow';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-function App(): JSX.Element {
+const Stack = createNativeStackNavigator();
+
+function WelcomeScreen({navigation}): JSX.Element {
   useEffect(() => {
     TrackPlayer.setupPlayer();
   });
-
-  const onPress = async () => {
-    Alert.alert('Вы выигарли сочный махентохен');
-  };
 
   const onPressStop = async () => {
     TrackPlayer.pause();
@@ -100,7 +99,9 @@ function App(): JSX.Element {
       <Text style={styles.header}>Getting Started</Text>
       <Text style={styles.subtitle}>Getting Started Getting</Text>
 
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Login')}>
         <Image
           source={require('./assets/images/Vector.png')}
           style={styles.note}></Image>
@@ -208,6 +209,83 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 10,
   },
+  login: {
+    color: '#FFFFFF',
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '15%',
+    fontWeight: 'bold',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+    fontSize: 26,
+  },
 });
+
+function LoginScreen(): JSX.Element {
+  return (
+    <View style={styles.container}>
+      <View>
+        <RadialGradient
+          style={{width: 500, height: 300, position: 'absolute'}}
+          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
+          stops={[0.2, 0.4, 0.6, 0.8]}
+          center={[110, 110]}
+          radius={250}></RadialGradient>
+      </View>
+      <View>
+        <RadialGradient
+          style={{
+            width: 400,
+            height: 400,
+            position: 'absolute',
+            left: 0,
+            top: 300,
+          }}
+          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
+          stops={[0.2, 0.4, 0.6, 0.8]}
+          center={[400, 200]}
+          radius={250}></RadialGradient>
+      </View>
+      <View>
+        <RadialGradient
+          style={{
+            width: 400,
+            height: 400,
+            position: 'absolute',
+            left: 0,
+            top: 700,
+          }}
+          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
+          stops={[0.2, 0.4, 0.6, 0.8]}
+          center={[200, 200]}
+          radius={250}></RadialGradient>
+      </View>
+
+      <Image
+        source={require('./assets/images/abstrakt.png')}
+        style={{alignSelf: 'center'}}></Image>
+      <Text style={styles.login}>Login your account</Text>
+    </View>
+  );
+}
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Welcome"
+          component={WelcomeScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Login"
+          component={LoginScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default App;
