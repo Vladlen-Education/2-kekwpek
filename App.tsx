@@ -15,6 +15,7 @@ import {
   Alert,
   TouchableOpacity,
   Platform,
+  StatusBar,
 } from 'react-native';
 import TrackPlayer, {
   AppKilledPlaybackBehavior,
@@ -52,19 +53,19 @@ function App(): JSX.Element {
   };
 
   return (
-    <View>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View>
         <RadialGradient
           style={{width: 500, height: 300, position: 'absolute'}}
           colors={['#26284F', '#25284E', '#212245', '#110B1D']}
           stops={[0.2, 0.4, 0.6, 0.8]}
           center={[110, 110]}
-          radius={200}></RadialGradient>
+          radius={250}></RadialGradient>
       </View>
       <View>
         <RadialGradient
           style={{
-            width: 500,
+            width: 400,
             height: 400,
             position: 'absolute',
             left: 0,
@@ -73,7 +74,21 @@ function App(): JSX.Element {
           colors={['#26284F', '#25284E', '#212245', '#110B1D']}
           stops={[0.2, 0.4, 0.6, 0.8]}
           center={[400, 200]}
-          radius={200}></RadialGradient>
+          radius={250}></RadialGradient>
+      </View>
+      <View>
+        <RadialGradient
+          style={{
+            width: 400,
+            height: 400,
+            position: 'absolute',
+            left: 0,
+            top: 700,
+          }}
+          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
+          stops={[0.2, 0.4, 0.6, 0.8]}
+          center={[200, 200]}
+          radius={250}></RadialGradient>
       </View>
 
       <Image
@@ -91,6 +106,9 @@ function App(): JSX.Element {
           style={styles.note}></Image>
         <Text style={styles.text}>Let's go</Text>
       </TouchableOpacity>
+
+      <StatusBar barStyle="light-content" hidden={true}></StatusBar>
+
       <Text style={styles.kekwpek}>kekwpek</Text>
       <Text style={styles.zhopa}>Best student</Text>
     </View>
@@ -99,7 +117,7 @@ function App(): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
+    position: 'relative',
     flex: 1,
     backgroundColor: '#110B1D',
   },
@@ -125,7 +143,8 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     position: 'absolute',
     alignSelf: 'center',
-    top: '44%',
+    top: '46%',
+    fontWeight: 'bold',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 32,
@@ -135,7 +154,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     position: 'absolute',
     alignSelf: 'center',
-    top: '49%',
+    top: '51%',
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 15,
     fontWeight: 'regular',
@@ -144,7 +163,7 @@ const styles = StyleSheet.create({
   button: {
     position: 'relative',
     alignSelf: 'center',
-    bottom: '30%',
+    bottom: '28%',
     backgroundColor: '#966AEF',
     overflow: 'hidden',
     shadowColor: 'black',
@@ -166,6 +185,7 @@ const styles = StyleSheet.create({
     left: 45,
     color: '#FFFFFF',
     fontSize: 20,
+    fontWeight: 'bold',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
   },
@@ -174,7 +194,8 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     position: 'absolute',
     alignSelf: 'center',
-    bottom: '24%',
+    bottom: '5%',
+    fontWeight: 'bold',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 15,
@@ -183,7 +204,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     position: 'absolute',
     alignSelf: 'center',
-    bottom: '22%',
+    bottom: '3%',
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 10,
   },
