@@ -5,8 +5,10 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+  SafeAreaView,
+  ImageBackground,
   StyleSheet,
   Text,
   View,
@@ -16,6 +18,7 @@ import {
   TouchableOpacity,
   Platform,
   StatusBar,
+  TextInput,
 } from 'react-native';
 import TrackPlayer, {
   AppKilledPlaybackBehavior,
@@ -53,65 +56,27 @@ function WelcomeScreen({navigation}): JSX.Element {
 
   return (
     <View style={styles.container}>
-      <View>
-        <RadialGradient
-          style={{width: 500, height: 300, position: 'absolute'}}
-          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
-          stops={[0.2, 0.4, 0.6, 0.8]}
-          center={[110, 110]}
-          radius={250}></RadialGradient>
-      </View>
-      <View>
-        <RadialGradient
-          style={{
-            width: 400,
-            height: 400,
-            position: 'absolute',
-            left: 0,
-            top: 300,
-          }}
-          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
-          stops={[0.2, 0.4, 0.6, 0.8]}
-          center={[400, 200]}
-          radius={250}></RadialGradient>
-      </View>
-      <View>
-        <RadialGradient
-          style={{
-            width: 400,
-            height: 400,
-            position: 'absolute',
-            left: 0,
-            top: 700,
-          }}
-          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
-          stops={[0.2, 0.4, 0.6, 0.8]}
-          center={[200, 200]}
-          radius={250}></RadialGradient>
-      </View>
+      <ImageBackground
+        source={require('./assets/images/backgroundimage.png')}
+        resizeMode="cover"
+        style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={styles.header}>Getting Started</Text>
+        <Text style={styles.subtitle}>Getting Started Getting</Text>
 
-      <Image
-        source={require('./assets/images/headphones.png')}
-        style={styles.headphone}></Image>
-      <Image
-        source={require('./assets/images/abstrakt.png')}
-        style={styles.abstract}></Image>
-      <Text style={styles.header}>Getting Started</Text>
-      <Text style={styles.subtitle}>Getting Started Getting</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Login')}>
+          <Image
+            source={require('./assets/images/Vector.png')}
+            style={styles.note}></Image>
+          <Text style={styles.text}>Let's go</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Login')}>
-        <Image
-          source={require('./assets/images/Vector.png')}
-          style={styles.note}></Image>
-        <Text style={styles.text}>Let's go</Text>
-      </TouchableOpacity>
+        <StatusBar barStyle="light-content" hidden={true}></StatusBar>
 
-      <StatusBar barStyle="light-content" hidden={true}></StatusBar>
-
-      <Text style={styles.kekwpek}>kekwpek</Text>
-      <Text style={styles.zhopa}>Best student</Text>
+        <Text style={styles.kekwpek}>kekwpek</Text>
+        <Text style={styles.zhopa}>Best student</Text>
+      </ImageBackground>
     </View>
   );
 }
@@ -120,7 +85,11 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     flex: 1,
-    backgroundColor: '#110B1D',
+  },
+
+  background: {
+    flex: 1,
+    flexDirection: 'column',
   },
 
   note: {
@@ -128,24 +97,14 @@ const styles = StyleSheet.create({
     left: 140,
   },
 
-  abstract: {
-    alignSelf: 'center',
-    position: 'relative',
-    bottom: 250,
-  },
-
-  headphone: {
-    position: 'relative',
-    alignSelf: 'center',
-    top: 100,
-  },
-
   header: {
     color: '#FFFFFF',
-    position: 'absolute',
+    position: 'relative',
+    paddingBottom: 10,
     alignSelf: 'center',
-    top: '46%',
-    fontWeight: 'bold',
+    justifyContent: 'center',
+    fontWeight: '600',
+    top: '2%',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 32,
@@ -153,9 +112,9 @@ const styles = StyleSheet.create({
 
   subtitle: {
     color: '#FFFFFF',
-    position: 'absolute',
+    position: 'relative',
     alignSelf: 'center',
-    top: '51%',
+    paddingTop: 10,
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 15,
     fontWeight: 'regular',
@@ -164,7 +123,7 @@ const styles = StyleSheet.create({
   button: {
     position: 'relative',
     alignSelf: 'center',
-    bottom: '28%',
+    top: '10%',
     backgroundColor: '#966AEF',
     overflow: 'hidden',
     shadowColor: 'black',
@@ -177,56 +136,56 @@ const styles = StyleSheet.create({
   buttonGoogle: {
     position: 'relative',
     alignSelf: 'center',
-    bottom: '40%',
+    bottom: '14%',
     backgroundColor: '#322251',
     overflow: 'hidden',
     shadowColor: 'black',
     shadowRadius: 10,
     shadowOpacity: 1,
     height: 59,
-    width: 377,
+    width: '90%',
     borderRadius: 10,
   },
 
   buttonFacebook: {
     position: 'relative',
     alignSelf: 'center',
-    bottom: '38%',
+    bottom: '12%',
     backgroundColor: '#322251',
     overflow: 'hidden',
     shadowColor: 'black',
     shadowRadius: 10,
     shadowOpacity: 1,
     height: 59,
-    width: 377,
+    width: '90%',
     borderRadius: 10,
   },
 
   buttonApple: {
     position: 'relative',
     alignSelf: 'center',
-    bottom: '36%',
+    bottom: '10%',
     backgroundColor: '#322251',
     overflow: 'hidden',
     shadowColor: 'black',
     shadowRadius: 10,
     shadowOpacity: 1,
     height: 59,
-    width: 377,
+    width: '90%',
     borderRadius: 10,
   },
 
   buttonLogin: {
     position: 'relative',
     alignSelf: 'center',
-    bottom: '23%',
+
     backgroundColor: '#966AEF',
     overflow: 'hidden',
     shadowColor: 'black',
     shadowRadius: 10,
     shadowOpacity: 1,
     height: 59,
-    width: 377,
+    width: '90%',
     borderRadius: 10,
   },
 
@@ -242,6 +201,7 @@ const styles = StyleSheet.create({
   },
 
   imageGoogle1: {
+    resizeMode: 'contain',
     height: 30,
     width: 30,
     left: 35,
@@ -254,16 +214,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: '#FFFFFF',
     fontSize: 13,
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
   },
 
   signUpText: {
     color: '#FFFFFF',
-    position: 'absolute',
+    position: 'relative',
     alignSelf: 'center',
-    bottom: '27%',
+    bottom: '0%',
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 13,
   },
@@ -279,7 +239,7 @@ const styles = StyleSheet.create({
     left: 45,
     color: '#FFFFFF',
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
   },
@@ -288,8 +248,8 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     position: 'absolute',
     alignSelf: 'center',
-    bottom: '5%',
-    fontWeight: 'bold',
+    bottom: '6%',
+    fontWeight: '600',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 15,
@@ -298,16 +258,16 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     position: 'absolute',
     alignSelf: 'center',
-    bottom: '3%',
+    bottom: '4%',
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 10,
   },
   login: {
     color: '#FFFFFF',
-    position: 'absolute',
+    position: 'relative',
     alignSelf: 'center',
-    top: '18%',
-    fontWeight: 'bold',
+    bottom: '18%',
+    fontWeight: '600',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 26,
@@ -315,110 +275,131 @@ const styles = StyleSheet.create({
 
   line: {
     flexDirection: 'row',
-    bottom: '80%',
+    alignSelf: 'center',
+    bottom: '28%',
+    width: '85%',
+  },
+
+  InputView: {
+    backgroundColor: '#322251',
+    position: 'relative',
+    alignSelf: 'center',
+    bottom: '14%',
+
+    overflow: 'hidden',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    height: 59,
+    width: '90%',
+    borderRadius: 10,
+  },
+
+  TextInput: {
+    position: 'relative',
+    bottom: 0,
+
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
   },
 });
 
-function LoginScreen(): JSX.Element {
+function LoginScreen({navigation}): JSX.Element {
   return (
     <View style={styles.container}>
-      <View>
-        <RadialGradient
-          style={{width: 500, height: 300, position: 'absolute'}}
-          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
-          stops={[0.2, 0.4, 0.6, 0.8]}
-          center={[110, 110]}
-          radius={250}></RadialGradient>
-      </View>
-      <View>
-        <RadialGradient
-          style={{
-            width: 400,
-            height: 400,
-            position: 'absolute',
-            left: 0,
-            top: 300,
-          }}
-          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
-          stops={[0.2, 0.4, 0.6, 0.8]}
-          center={[400, 200]}
-          radius={250}></RadialGradient>
-      </View>
-      <View>
-        <RadialGradient
-          style={{
-            width: 400,
-            height: 400,
-            position: 'absolute',
-            left: 0,
-            top: 700,
-          }}
-          colors={['#26284F', '#25284E', '#212245', '#110B1D']}
-          stops={[0.2, 0.4, 0.6, 0.8]}
-          center={[200, 200]}
-          radius={250}></RadialGradient>
-      </View>
+      <ImageBackground
+        source={require('./assets/images/backgroundimage2.png')}
+        resizeMode="cover"
+        style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={styles.login}>Let`s get you in</Text>
+        <TouchableOpacity style={styles.buttonGoogle}>
+          <Image
+            source={require('./assets/images/google1.png')}
+            style={styles.imageGoogle1}></Image>
+          <Text style={styles.GoogleLoginText}>Continue with Google</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonFacebook}>
+          <Image
+            source={require('./assets/images/facebook1.png')}
+            style={styles.imageGoogle1}></Image>
+          <Text style={styles.GoogleLoginText}>Continue with Facebook</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonApple}>
+          <Image
+            source={require('./assets/images/apple1.png')}
+            style={styles.imageGoogle1}></Image>
+          <Text style={styles.GoogleLoginText}>Continue with Apple</Text>
+        </TouchableOpacity>
 
-      <Image
-        source={require('./assets/images/abstrakt.png')}
-        style={{alignSelf: 'center'}}></Image>
-      <Text style={styles.login}>Let`s get you in</Text>
-      <TouchableOpacity style={styles.buttonGoogle}>
-        <Image
-          source={require('./assets/images/google1.png')}
-          style={styles.imageGoogle1}></Image>
-        <Text style={styles.GoogleLoginText}>Continue with Google</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonFacebook}>
-        <Image
-          source={require('./assets/images/facebook1.png')}
-          style={styles.imageGoogle1}></Image>
-        <Text style={styles.GoogleLoginText}>Continue with Google</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonApple}>
-        <Image
-          source={require('./assets/images/apple1.png')}
-          style={styles.imageGoogle1}></Image>
-        <Text style={styles.GoogleLoginText}>Continue with Google</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonLogin}
+          onPress={() => navigation.navigate('Password')}>
+          <Text style={styles.buttonLoginText}>Log in with a password</Text>
+        </TouchableOpacity>
+        <View style={styles.line}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              height: 2,
 
-      <TouchableOpacity style={styles.buttonLogin}>
-        <Text style={styles.buttonLoginText}>Log in with a password</Text>
-      </TouchableOpacity>
-      <View style={styles.line}>
-        <View
-          style={{
-            backgroundColor: 'white',
-            height: 2,
+              flex: 1,
+              alignSelf: 'center',
+            }}
+          />
+          <Text
+            style={{
+              color: '#FFFFFF',
+              alignSelf: 'center',
+              paddingHorizontal: 5,
+              fontSize: 13,
+              fontWeight: '600',
+              fontFamily:
+                Platform.OS === 'android'
+                  ? 'centurygothicbold'
+                  : 'Century Gothic',
+            }}>
+            or
+          </Text>
+          <View
+            style={{
+              backgroundColor: 'white',
+              height: 2,
+              flex: 1,
+              alignSelf: 'center',
+            }}
+          />
+        </View>
+        <Text style={styles.signUpText}>Don`t have an account? Sign Up</Text>
+      </ImageBackground>
+    </View>
+  );
+}
 
-            flex: 1,
-            alignSelf: 'center',
-          }}
-        />
-        <Text
-          style={{
-            color: '#FFFFFF',
-            alignSelf: 'center',
-            paddingHorizontal: 5,
-            fontSize: 13,
-            fontWeight: 'bold',
-            fontFamily:
-              Platform.OS === 'android'
-                ? 'centurygothicbold'
-                : 'Century Gothic',
-          }}>
-          or
-        </Text>
-        <View
-          style={{
-            backgroundColor: 'white',
-            height: 2,
-            flex: 1,
-            alignSelf: 'center',
-          }}
-        />
-      </View>
-      <Text style={styles.signUpText}>Don`t have an account? Sign Up</Text>
+function PasswordScreen(): JSX.Element {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={require('./assets/images/backgroundimage2.png')}
+        resizeMode="cover"
+        style={{flex: 1, justifyContent: 'center'}}>
+        <Text style={styles.login}>Login your account</Text>
+        <View style={styles.InputView}>
+          <TextInput
+            style={styles.TextInput}
+            autoCorrect={false}
+            keyboardType="email-address"
+            placeholder="Email"
+            placeholderTextColor={'#FFFFFF'}
+            onChangeText={email => setEmail(email)}
+          />
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -436,6 +417,11 @@ function App() {
           options={{headerShown: false}}
           name="Login"
           component={LoginScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Password"
+          component={PasswordScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
