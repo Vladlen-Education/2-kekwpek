@@ -26,7 +26,6 @@ import TrackPlayer, {
   RepeatMode,
   Event,
 } from 'react-native-track-player';
-import RadialGradient from 'react-native-radial-gradient';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -196,10 +195,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
 
-  shadow: {
-    borderRadius: 25,
-  },
-
   text: {
     position: 'absolute',
     alignSelf: 'center',
@@ -213,7 +208,6 @@ const styles = StyleSheet.create({
   },
 
   kekwpek: {
-    // top: '43.5%',
     bottom: '6%',
     position: 'absolute',
     color: '#FFFFFF',
