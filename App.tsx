@@ -60,16 +60,18 @@ function WelcomeScreen({navigation}): JSX.Element {
         source={require('./assets/images/backgroundimage.png')}
         resizeMode="cover"
         style={{flex: 1}}>
-        <Text style={styles.header}>Getting Started</Text>
-        <Text style={styles.subtitle}>Getting Started Getting</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Login')}>
-          <Image
-            source={require('./assets/images/Vector.png')}
-            style={styles.note}></Image>
-          <Text style={styles.text}>Let's go</Text>
-        </TouchableOpacity>
+        <View style={{top: '43.5%'}}>
+          <Text style={styles.header}>Getting Started</Text>
+          <Text style={styles.subtitle}>Getting Started Getting</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Login')}>
+            <Image
+              source={require('./assets/images/Vector.png')}
+              style={styles.note}></Image>
+            <Text style={styles.text}>Let's go</Text>
+          </TouchableOpacity>
+        </View>
         <Text style={styles.kekwpek}>kekwpek</Text>
         <Text style={styles.zhopa}>Best student</Text>
       </ImageBackground>
@@ -89,7 +91,6 @@ const styles = StyleSheet.create({
 
   header: {
     color: '#FFFFFF',
-    top: '43.5%',
     alignSelf: 'center',
     fontWeight: '600',
     fontFamily:
@@ -100,7 +101,6 @@ const styles = StyleSheet.create({
   subtitle: {
     color: '#FFFFFF',
     alignSelf: 'center',
-    top: '43.5%',
     marginTop: '2%',
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 15,
@@ -109,7 +109,6 @@ const styles = StyleSheet.create({
 
   button: {
     alignSelf: 'center',
-    top: '43.5%',
     marginBottom: '51.5%',
     backgroundColor: '#966AEF',
     marginTop: '21%',
@@ -117,10 +116,10 @@ const styles = StyleSheet.create({
     width: 200,
     borderRadius: 20,
   },
+
   buttonGoogle: {
-    position: 'relative',
     alignSelf: 'center',
-    bottom: '14%',
+    marginTop: '8%',
     backgroundColor: '#322251',
     height: 59,
     width: '90%',
@@ -128,19 +127,9 @@ const styles = StyleSheet.create({
   },
 
   buttonFacebook: {
-    position: 'relative',
     alignSelf: 'center',
-    bottom: '12%',
-    backgroundColor: '#322251',
-    height: 59,
-    width: '90%',
-    borderRadius: 10,
-  },
-
-  buttonApple: {
-    position: 'relative',
-    alignSelf: 'center',
-    bottom: '10%',
+    // top: '15.7%',
+    marginTop: 20,
     backgroundColor: '#322251',
     height: 59,
     width: '90%',
@@ -148,7 +137,7 @@ const styles = StyleSheet.create({
   },
 
   buttonLogin: {
-    position: 'relative',
+    marginTop: '10%',
     alignSelf: 'center',
     backgroundColor: '#966AEF',
     height: 59,
@@ -171,7 +160,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 30,
     width: 30,
-    left: 35,
+    left: 39,
     top: 15,
   },
 
@@ -188,9 +177,8 @@ const styles = StyleSheet.create({
 
   signUpText: {
     color: '#FFFFFF',
-    position: 'relative',
     alignSelf: 'center',
-    bottom: '0%',
+    marginTop: 18,
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 13,
   },
@@ -228,9 +216,7 @@ const styles = StyleSheet.create({
   },
   login: {
     color: '#FFFFFF',
-    position: 'relative',
     alignSelf: 'center',
-    bottom: '18%',
     fontWeight: '600',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
@@ -238,9 +224,9 @@ const styles = StyleSheet.create({
   },
 
   line: {
+    marginTop: '11%',
     flexDirection: 'row',
     alignSelf: 'center',
-    bottom: '28%',
     width: '85%',
   },
 
@@ -277,66 +263,68 @@ function LoginScreen({navigation}): JSX.Element {
       <ImageBackground
         source={require('./assets/images/backgroundimage2.png')}
         resizeMode="cover"
-        style={{flex: 1, justifyContent: 'center'}}>
-        <Text style={styles.login}>Let`s get you in</Text>
-        <TouchableOpacity style={styles.buttonGoogle}>
-          <Image
-            source={require('./assets/images/google1.png')}
-            style={styles.imageGoogle1}></Image>
-          <Text style={styles.GoogleLoginText}>Continue with Google</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonFacebook}>
-          <Image
-            source={require('./assets/images/facebook1.png')}
-            style={styles.imageGoogle1}></Image>
-          <Text style={styles.GoogleLoginText}>Continue with Facebook</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonApple}>
-          <Image
-            source={require('./assets/images/apple1.png')}
-            style={styles.imageGoogle1}></Image>
-          <Text style={styles.GoogleLoginText}>Continue with Apple</Text>
-        </TouchableOpacity>
+        style={{flex: 1}}>
+        <View style={{top: '15.7%'}}>
+          <Text style={styles.login}>Let`s get you in</Text>
+          <TouchableOpacity style={styles.buttonGoogle}>
+            <Image
+              source={require('./assets/images/google1.png')}
+              style={styles.imageGoogle1}></Image>
+            <Text style={styles.GoogleLoginText}>Continue with Google</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonFacebook}>
+            <Image
+              source={require('./assets/images/facebook1.png')}
+              style={styles.imageGoogle1}></Image>
+            <Text style={styles.GoogleLoginText}>Continue with Facebook</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonFacebook}>
+            <Image
+              source={require('./assets/images/apple1.png')}
+              style={styles.imageGoogle1}></Image>
+            <Text style={styles.GoogleLoginText}>Continue with Apple</Text>
+          </TouchableOpacity>
+          <View style={styles.line}>
+            <View
+              style={{
+                backgroundColor: 'white',
+                height: 2,
 
-        <TouchableOpacity
-          style={styles.buttonLogin}
-          onPress={() => navigation.navigate('Password')}>
-          <Text style={styles.buttonLoginText}>Log in with a password</Text>
-        </TouchableOpacity>
-        <View style={styles.line}>
-          <View
-            style={{
-              backgroundColor: 'white',
-              height: 2,
+                flex: 1,
+                alignSelf: 'center',
+              }}
+            />
+            <Text
+              style={{
+                color: '#FFFFFF',
+                alignSelf: 'center',
+                paddingHorizontal: 5,
+                fontSize: 13,
+                fontWeight: '600',
+                fontFamily:
+                  Platform.OS === 'android'
+                    ? 'centurygothicbold'
+                    : 'Century Gothic',
+              }}>
+              or
+            </Text>
+            <View
+              style={{
+                backgroundColor: 'white',
+                height: 2,
+                flex: 1,
+                alignSelf: 'center',
+              }}
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.buttonLogin}
+            onPress={() => navigation.navigate('Password')}>
+            <Text style={styles.buttonLoginText}>Log in with a password</Text>
+          </TouchableOpacity>
 
-              flex: 1,
-              alignSelf: 'center',
-            }}
-          />
-          <Text
-            style={{
-              color: '#FFFFFF',
-              alignSelf: 'center',
-              paddingHorizontal: 5,
-              fontSize: 13,
-              fontWeight: '600',
-              fontFamily:
-                Platform.OS === 'android'
-                  ? 'centurygothicbold'
-                  : 'Century Gothic',
-            }}>
-            or
-          </Text>
-          <View
-            style={{
-              backgroundColor: 'white',
-              height: 2,
-              flex: 1,
-              alignSelf: 'center',
-            }}
-          />
+          <Text style={styles.signUpText}>Don`t have an account? Sign Up</Text>
         </View>
-        <Text style={styles.signUpText}>Don`t have an account? Sign Up</Text>
       </ImageBackground>
     </View>
   );
