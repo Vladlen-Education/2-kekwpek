@@ -56,13 +56,13 @@ function WelcomeScreen({navigation}): JSX.Element {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" hidden={false}></StatusBar>
       <ImageBackground
         source={require('./assets/images/backgroundimage.png')}
         resizeMode="cover"
-        style={{flex: 1, justifyContent: 'center'}}>
+        style={{flex: 1}}>
         <Text style={styles.header}>Getting Started</Text>
         <Text style={styles.subtitle}>Getting Started Getting</Text>
-
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Login')}>
@@ -71,9 +71,6 @@ function WelcomeScreen({navigation}): JSX.Element {
             style={styles.note}></Image>
           <Text style={styles.text}>Let's go</Text>
         </TouchableOpacity>
-
-        <StatusBar barStyle="light-content" hidden={true}></StatusBar>
-
         <Text style={styles.kekwpek}>kekwpek</Text>
         <Text style={styles.zhopa}>Best student</Text>
       </ImageBackground>
@@ -83,13 +80,7 @@ function WelcomeScreen({navigation}): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
     flex: 1,
-  },
-
-  background: {
-    flex: 1,
-    flexDirection: 'column',
   },
 
   note: {
@@ -99,12 +90,9 @@ const styles = StyleSheet.create({
 
   header: {
     color: '#FFFFFF',
-    position: 'relative',
-    paddingBottom: 10,
+    top: '43.5%',
     alignSelf: 'center',
-    justifyContent: 'center',
     fontWeight: '600',
-    top: '2%',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 32,
@@ -112,23 +100,20 @@ const styles = StyleSheet.create({
 
   subtitle: {
     color: '#FFFFFF',
-    position: 'relative',
     alignSelf: 'center',
-    paddingTop: 10,
+    top: '43.5%',
+    marginTop: '2%',
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 15,
     fontWeight: 'regular',
   },
 
   button: {
-    position: 'relative',
     alignSelf: 'center',
-    top: '10%',
+    top: '43.5%',
+    marginBottom: '51.5%',
     backgroundColor: '#966AEF',
-    overflow: 'hidden',
-    shadowColor: 'black',
-    shadowRadius: 10,
-    shadowOpacity: 1,
+    marginTop: '21%',
     height: 69,
     width: 200,
     borderRadius: 20,
@@ -138,10 +123,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     bottom: '14%',
     backgroundColor: '#322251',
-    overflow: 'hidden',
-    shadowColor: 'black',
-    shadowRadius: 10,
-    shadowOpacity: 1,
     height: 59,
     width: '90%',
     borderRadius: 10,
@@ -152,10 +133,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     bottom: '12%',
     backgroundColor: '#322251',
-    overflow: 'hidden',
-    shadowColor: 'black',
-    shadowRadius: 10,
-    shadowOpacity: 1,
     height: 59,
     width: '90%',
     borderRadius: 10,
@@ -166,10 +143,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     bottom: '10%',
     backgroundColor: '#322251',
-    overflow: 'hidden',
-    shadowColor: 'black',
-    shadowRadius: 10,
-    shadowOpacity: 1,
     height: 59,
     width: '90%',
     borderRadius: 10,
@@ -178,12 +151,7 @@ const styles = StyleSheet.create({
   buttonLogin: {
     position: 'relative',
     alignSelf: 'center',
-
     backgroundColor: '#966AEF',
-    overflow: 'hidden',
-    shadowColor: 'black',
-    shadowRadius: 10,
-    shadowOpacity: 1,
     height: 59,
     width: '90%',
     borderRadius: 10,
@@ -245,10 +213,11 @@ const styles = StyleSheet.create({
   },
 
   kekwpek: {
-    color: '#FFFFFF',
-    position: 'absolute',
-    alignSelf: 'center',
+    // top: '43.5%',
     bottom: '6%',
+    position: 'absolute',
+    color: '#FFFFFF',
+    alignSelf: 'center',
     fontWeight: '600',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
@@ -257,8 +226,9 @@ const styles = StyleSheet.create({
   zhopa: {
     color: '#FFFFFF',
     position: 'absolute',
-    alignSelf: 'center',
     bottom: '4%',
+    alignSelf: 'center',
+    marginTop: 7,
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 10,
   },
