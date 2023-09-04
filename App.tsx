@@ -28,6 +28,7 @@ import TrackPlayer, {
 } from 'react-native-track-player';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,6 +75,224 @@ function WelcomeScreen({navigation}): JSX.Element {
         </View>
         <Text style={styles.kekwpek}>kekwpek</Text>
         <Text style={styles.zhopa}>Best student</Text>
+      </ImageBackground>
+    </View>
+  );
+}
+
+function LoginScreen({navigation}): JSX.Element {
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={require('./assets/images/backgroundimage2.png')}
+        resizeMode="cover"
+        style={{flex: 1}}>
+        <View style={{top: '15.7%'}}>
+          <Text style={styles.login}>Let`s get you in</Text>
+          <TouchableOpacity style={styles.buttonGoogle}>
+            <Image
+              source={require('./assets/images/google1.png')}
+              style={styles.imageGoogle1}></Image>
+            <Text style={styles.GoogleLoginText}>Continue with Google</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonFacebook}>
+            <Image
+              source={require('./assets/images/facebook1.png')}
+              style={styles.imageGoogle1}></Image>
+            <Text style={styles.GoogleLoginText}>Continue with Facebook</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonFacebook}>
+            <Image
+              source={require('./assets/images/apple1.png')}
+              style={styles.imageGoogle1}></Image>
+            <Text style={styles.GoogleLoginText}>Continue with Apple</Text>
+          </TouchableOpacity>
+          <View style={styles.line}>
+            <View
+              style={{
+                backgroundColor: 'white',
+                height: 2,
+
+                flex: 1,
+                alignSelf: 'center',
+              }}
+            />
+            <Text
+              style={{
+                color: '#FFFFFF',
+                alignSelf: 'center',
+                paddingHorizontal: 17,
+                fontSize: 13,
+                fontWeight: '600',
+                fontFamily:
+                  Platform.OS === 'android'
+                    ? 'centurygothicbold'
+                    : 'Century Gothic',
+              }}>
+              or
+            </Text>
+            <View
+              style={{
+                backgroundColor: 'white',
+                height: 2,
+                flex: 1,
+                alignSelf: 'center',
+              }}
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.buttonLogin}
+            onPress={() => navigation.navigate('Password')}>
+            <Text style={styles.buttonLoginText}>Log in with a password</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.signUpText}>Don`t have an account? Sign Up</Text>
+        </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+function PasswordScreen(): JSX.Element {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [hidePass, setHidePass] = useState(true);
+
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={require('./assets/images/backgroundimage2.png')}
+        resizeMode="cover"
+        style={{flex: 1}}>
+        <View style={{top: '15.7%'}}>
+          <Text style={styles.passwordLogin}>Login your account</Text>
+          <View style={styles.InputView}>
+            <Image
+              source={require('./assets/images/mail.png')}
+              style={{
+                width: 15,
+                height: 12,
+                marginTop: 24,
+                marginLeft: 24,
+                marginRight: 25,
+              }}
+              tintColor="#5a4e74"></Image>
+            <TextInput
+              style={styles.TextInput}
+              autoCorrect={false}
+              keyboardType="email-address"
+              placeholder="Email"
+              placeholderTextColor={'#FFFFFF'}
+              onChangeText={email => setEmail(email)}
+            />
+          </View>
+          <View style={styles.InputViewPassword}>
+            <Image
+              source={require('./assets/images/icon.png')}
+              style={{
+                width: 12,
+                height: 14,
+                marginTop: 23,
+                marginLeft: 25,
+                marginRight: 27,
+              }}
+              tintColor="#5a4e74"></Image>
+            <TextInput
+              style={styles.TextInput}
+              autoCorrect={false}
+              secureTextEntry={hidePass ? true : false}
+              placeholder="Password"
+              placeholderTextColor={'#FFFFFF'}
+              onChangeText={password => setPassword(password)}
+            />
+            <TouchableOpacity
+              style={{
+                position: 'absolute',
+                marginTop: 24,
+                left: 337,
+              }}
+              onPress={() => setHidePass(!hidePass)}>
+              <Image
+                source={require('./assets/images/eye.png')}
+                style={{height: 12.5, width: 16}}
+                tintColor="#5a4e74"></Image>
+            </TouchableOpacity>
+          </View>
+          <BouncyCheckbox
+            style={{left: 38, marginTop: 39}}
+            size={11}
+            text="Remember me"
+            textStyle={{
+              textDecorationLine: 'none',
+              color: '#FFFFFF',
+              // alignSelf: 'center',
+              fontSize: 11,
+              fontWeight: '600',
+              fontFamily:
+                Platform.OS === 'android'
+                  ? 'centurygothicbold'
+                  : 'Century Gothic',
+            }}
+            innerIconStyle={{borderColor: '#9568ef', borderRadius: 2}}
+            fillColor="#9568ef"
+            onPress={(isChecked: boolean) => {}}
+          />
+          <TouchableOpacity style={styles.buttonLogin}>
+            <Text style={styles.buttonLoginText}>Login</Text>
+          </TouchableOpacity>
+          <Text style={styles.forgotPassword}>Forgot the password</Text>
+          <View style={styles.line2}>
+            <View
+              style={{
+                backgroundColor: 'white',
+                height: 2,
+
+                flex: 1,
+                alignSelf: 'center',
+              }}
+            />
+            <Text
+              style={{
+                color: '#FFFFFF',
+                alignSelf: 'center',
+                paddingHorizontal: 23,
+                fontSize: 13,
+                fontWeight: '600',
+                fontFamily:
+                  Platform.OS === 'android'
+                    ? 'centurygothicbold'
+                    : 'Century Gothic',
+              }}>
+              or continue with
+            </Text>
+            <View
+              style={{
+                backgroundColor: 'white',
+                height: 2,
+                flex: 1,
+                alignSelf: 'center',
+              }}
+            />
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity style={styles.buttonGoogleSmall}>
+              <Image
+                source={require('./assets/images/google1.png')}
+                style={styles.imageGoogle2}></Image>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonFacebookSmall}>
+              <Image
+                source={require('./assets/images/facebook1.png')}
+                style={styles.imageGoogle2}></Image>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonFacebookSmall}>
+              <Image
+                source={require('./assets/images/apple1.png')}
+                style={styles.imageGoogle2}></Image>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.signUpText2}>Don`t have an account? Sign Up</Text>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -128,12 +347,29 @@ const styles = StyleSheet.create({
 
   buttonFacebook: {
     alignSelf: 'center',
-    // top: '15.7%',
     marginTop: 20,
     backgroundColor: '#322251',
     height: 59,
     width: '90%',
     borderRadius: 10,
+  },
+
+  buttonGoogleSmall: {
+    backgroundColor: '#3d384d',
+    height: 50,
+    width: 50,
+    borderRadius: 55,
+    marginTop: 44,
+    marginLeft: 78,
+  },
+
+  buttonFacebookSmall: {
+    backgroundColor: '#3d384d',
+    height: 50,
+    width: 50,
+    borderRadius: 55,
+    marginTop: 44,
+    marginLeft: 60.4,
   },
 
   buttonLogin: {
@@ -164,6 +400,14 @@ const styles = StyleSheet.create({
     top: 15,
   },
 
+  imageGoogle2: {
+    resizeMode: 'contain',
+    height: 30,
+    width: 30,
+    alignSelf: 'center',
+    top: 10,
+  },
+
   GoogleLoginText: {
     position: 'relative',
     bottom: 9,
@@ -179,6 +423,14 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     alignSelf: 'center',
     marginTop: 18,
+    fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
+    fontSize: 13,
+  },
+
+  signUpText2: {
+    color: '#FFFFFF',
+    alignSelf: 'center',
+    marginTop: 33,
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 13,
   },
@@ -223,6 +475,16 @@ const styles = StyleSheet.create({
     fontSize: 26,
   },
 
+  passwordLogin: {
+    color: '#FFFFFF',
+    alignSelf: 'center',
+    fontWeight: '600',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+    fontSize: 26,
+    marginBottom: 38,
+  },
+
   line: {
     marginTop: '11%',
     flexDirection: 'row',
@@ -230,131 +492,52 @@ const styles = StyleSheet.create({
     width: '85%',
   },
 
-  InputView: {
-    backgroundColor: '#322251',
-    position: 'relative',
+  line2: {
+    marginTop: 48,
+    flexDirection: 'row',
     alignSelf: 'center',
-    bottom: '14%',
+    width: '85%',
+  },
 
-    overflow: 'hidden',
-    shadowColor: 'black',
-    shadowRadius: 10,
-    shadowOpacity: 1,
+  InputView: {
+    flexDirection: 'row',
+    backgroundColor: '#322251',
+    alignSelf: 'center',
     height: 59,
     width: '90%',
     borderRadius: 10,
   },
 
-  TextInput: {
-    position: 'relative',
-    bottom: 0,
+  InputViewPassword: {
+    flexDirection: 'row',
+    backgroundColor: '#322251',
+    alignSelf: 'center',
+    height: 59,
+    width: '90%',
+    borderRadius: 10,
+    marginTop: 30,
+  },
 
+  TextInput: {
+    // left: 64,
+    // top: 22,
     color: '#FFFFFF',
     fontSize: 13,
     fontWeight: '600',
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
   },
+
+  forgotPassword: {
+    color: '#9668EF',
+    alignSelf: 'center',
+    fontWeight: '600',
+    fontFamily:
+      Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
+    fontSize: 13,
+    marginTop: 14,
+  },
 });
-
-function LoginScreen({navigation}): JSX.Element {
-  return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('./assets/images/backgroundimage2.png')}
-        resizeMode="cover"
-        style={{flex: 1}}>
-        <View style={{top: '15.7%'}}>
-          <Text style={styles.login}>Let`s get you in</Text>
-          <TouchableOpacity style={styles.buttonGoogle}>
-            <Image
-              source={require('./assets/images/google1.png')}
-              style={styles.imageGoogle1}></Image>
-            <Text style={styles.GoogleLoginText}>Continue with Google</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonFacebook}>
-            <Image
-              source={require('./assets/images/facebook1.png')}
-              style={styles.imageGoogle1}></Image>
-            <Text style={styles.GoogleLoginText}>Continue with Facebook</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonFacebook}>
-            <Image
-              source={require('./assets/images/apple1.png')}
-              style={styles.imageGoogle1}></Image>
-            <Text style={styles.GoogleLoginText}>Continue with Apple</Text>
-          </TouchableOpacity>
-          <View style={styles.line}>
-            <View
-              style={{
-                backgroundColor: 'white',
-                height: 2,
-
-                flex: 1,
-                alignSelf: 'center',
-              }}
-            />
-            <Text
-              style={{
-                color: '#FFFFFF',
-                alignSelf: 'center',
-                paddingHorizontal: 5,
-                fontSize: 13,
-                fontWeight: '600',
-                fontFamily:
-                  Platform.OS === 'android'
-                    ? 'centurygothicbold'
-                    : 'Century Gothic',
-              }}>
-              or
-            </Text>
-            <View
-              style={{
-                backgroundColor: 'white',
-                height: 2,
-                flex: 1,
-                alignSelf: 'center',
-              }}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.buttonLogin}
-            onPress={() => navigation.navigate('Password')}>
-            <Text style={styles.buttonLoginText}>Log in with a password</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.signUpText}>Don`t have an account? Sign Up</Text>
-        </View>
-      </ImageBackground>
-    </View>
-  );
-}
-
-function PasswordScreen(): JSX.Element {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('./assets/images/backgroundimage2.png')}
-        resizeMode="cover"
-        style={{flex: 1, justifyContent: 'center'}}>
-        <Text style={styles.login}>Login your account</Text>
-        <View style={styles.InputView}>
-          <TextInput
-            style={styles.TextInput}
-            autoCorrect={false}
-            keyboardType="email-address"
-            placeholder="Email"
-            placeholderTextColor={'#FFFFFF'}
-            onChangeText={email => setEmail(email)}
-          />
-        </View>
-      </ImageBackground>
-    </View>
-  );
-}
 
 function App() {
   return (
