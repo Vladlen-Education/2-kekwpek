@@ -7,14 +7,11 @@
 
 import React, {useEffect, useState} from 'react';
 import {
-  SafeAreaView,
   ImageBackground,
   StyleSheet,
   Text,
   View,
   Image,
-  Button,
-  Alert,
   TouchableOpacity,
   Platform,
   StatusBar,
@@ -209,7 +206,7 @@ function PasswordScreen(): JSX.Element {
               style={{
                 position: 'absolute',
                 marginTop: 24,
-                left: 337,
+                left: '87.5%',
               }}
               onPress={() => setHidePass(!hidePass)}>
               <Image
@@ -219,13 +216,12 @@ function PasswordScreen(): JSX.Element {
             </TouchableOpacity>
           </View>
           <BouncyCheckbox
-            style={{left: 38, marginTop: 39}}
+            style={{left: 38, marginTop: '9%'}}
             size={11}
             text="Remember me"
             textStyle={{
               textDecorationLine: 'none',
               color: '#FFFFFF',
-              // alignSelf: 'center',
               fontSize: 11,
               fontWeight: '600',
               fontFamily:
@@ -237,7 +233,7 @@ function PasswordScreen(): JSX.Element {
             fillColor="#9568ef"
             onPress={(isChecked: boolean) => {}}
           />
-          <TouchableOpacity style={styles.buttonLogin}>
+          <TouchableOpacity style={styles.buttonLoginPassword}>
             <Text style={styles.buttonLoginText}>Login</Text>
           </TouchableOpacity>
           <Text style={styles.forgotPassword}>Forgot the password</Text>
@@ -274,7 +270,13 @@ function PasswordScreen(): JSX.Element {
               }}
             />
           </View>
-          <View style={{flexDirection: 'row'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginLeft: '18.2%',
+              marginRight: '18.2%',
+              justifyContent: 'space-between',
+            }}>
             <TouchableOpacity style={styles.buttonGoogleSmall}>
               <Image
                 source={require('./assets/images/google1.png')}
@@ -359,8 +361,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 55,
-    marginTop: 44,
-    marginLeft: 78,
+    marginTop: '16%',
   },
 
   buttonFacebookSmall: {
@@ -368,12 +369,20 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 55,
-    marginTop: 44,
-    marginLeft: 60.4,
+    marginTop: '16%',
   },
 
   buttonLogin: {
     marginTop: '10%',
+    alignSelf: 'center',
+    backgroundColor: '#966AEF',
+    height: 59,
+    width: '90%',
+    borderRadius: 10,
+  },
+
+  buttonLoginPassword: {
+    marginTop: '7.5%',
     alignSelf: 'center',
     backgroundColor: '#966AEF',
     height: 59,
@@ -430,7 +439,7 @@ const styles = StyleSheet.create({
   signUpText2: {
     color: '#FFFFFF',
     alignSelf: 'center',
-    marginTop: 33,
+    marginTop: '7.8%',
     fontFamily: Platform.OS === 'android' ? 'centurygothic' : 'Century Gothic',
     fontSize: 13,
   },
@@ -482,7 +491,7 @@ const styles = StyleSheet.create({
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 26,
-    marginBottom: 38,
+    marginBottom: '9%',
   },
 
   line: {
@@ -493,7 +502,7 @@ const styles = StyleSheet.create({
   },
 
   line2: {
-    marginTop: 48,
+    marginTop: '11%',
     flexDirection: 'row',
     alignSelf: 'center',
     width: '85%',
@@ -515,12 +524,10 @@ const styles = StyleSheet.create({
     height: 59,
     width: '90%',
     borderRadius: 10,
-    marginTop: 30,
+    marginTop: '7%',
   },
 
   TextInput: {
-    // left: 64,
-    // top: 22,
     color: '#FFFFFF',
     fontSize: 13,
     fontWeight: '600',
@@ -535,7 +542,7 @@ const styles = StyleSheet.create({
     fontFamily:
       Platform.OS === 'android' ? 'centurygothicbold' : 'Century Gothic',
     fontSize: 13,
-    marginTop: 14,
+    marginTop: '3%',
   },
 });
 
